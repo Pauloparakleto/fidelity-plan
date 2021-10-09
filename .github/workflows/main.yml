@@ -36,5 +36,4 @@ jobs:
           cp config/database.sample.yml config/database.yml
           bin/rails db:create
           bin/rails db:schema:load
-          bin/rails test
 
