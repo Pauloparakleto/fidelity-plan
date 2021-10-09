@@ -14,8 +14,9 @@ default: &default
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password:
-    socket: /tmp/mysql.sock
+  password: 'password'
+  host: 'localhost'
+  socket: /tmp/mysql.sock
 
 development:
   <<: *default
@@ -27,7 +28,6 @@ development:
 test:
   <<: *default
   database: fidelity_plan_test
-  host: 127.0.0.1
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
