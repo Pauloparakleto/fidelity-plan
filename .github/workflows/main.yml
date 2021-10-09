@@ -42,7 +42,7 @@ jobs:
           gem install bundler --version 2.2.20
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3 --path vendor/bundle
-          bin/rails db:prepare
+          bin/rails db:create
       - name: Run tests
         env:
           DB_PASSWORD: root
