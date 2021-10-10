@@ -39,6 +39,6 @@ jobs:
           bundle exec rails webpacker:install
           bundle exec rspec
 
-      # - name: Rubocop Check
-      #  run: |
-      #   bundle exec rubocop
+      - name: Rubocop Check
+        run: |
+         bundle exec rubocop
