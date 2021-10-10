@@ -1,7 +1,7 @@
 require:
-  - rubocop-performance
+  #- rubocop-performance
   - rubocop-rails
-  - rubocop-rspec
+  #- rubocop-rspec
 
 AllCops:
   NewCops: enable
@@ -15,7 +15,13 @@ AllCops:
     - 'app/views/**/*'
     - 'config/environments/*'
     - 'config/initializers/*'
+    - 'config/*'
     - 'node_modules/**/*'
+    - 'spec/rails_helper.rb'
+    - 'spec/spec_helper.rb'
+    - 'app/mailers/application_mailer.rb'
+    - 'config.ru'
+    - 'Rakefile'
 
 # Metrics Cops
 
