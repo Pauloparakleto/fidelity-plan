@@ -1,53 +1,44 @@
+name: Ruby
 
-name: github-actions-rails-mysql
+on: [push,pull_request]
 
-on:
-  pull_request:
-    branches: ['*']
-  push:
-    branches: [main]
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
+
     services:
-      mysql:
-        image: mysql:5.7
+      db:
+        image: postgres:11
+        ports: [ '5432:5432' ]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
         env:
-          MYSQL_DB: fidelity_plan_test
-          MYSQL_ROOT_PASSWORD: root
-        ports:
-          - 3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+          POSTGRES_PASSWORD: 12345
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Ruby 2.6.7
+      - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.6.7
-          bundler: default
-          bundler-cache: true
-      - name: Verify MySQL connection from host
-        run: |
-          sudo apt-get install -y mysql-client libmysqlclient-dev
-          mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports[3306] }} -uroot -proot -e "SHOW GRANTS FOR 'root'@'localhost'"
-          mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports[3306] }} -uroot -proot mysql
-      - name: Bundle Install and Create DB
+      - name: Run the default task
         env:
+          PGHOST: localhost
+          PGUSER: postgres
+          PGPASSWORD: 12345
           RAILS_ENV: test
-          DB_PASSWORD: root
-          # tell Rails to use proper port for MySQL
-          DB_PORT: ${{ job.services.mysql.ports[3306] }}
         run: |
+          sudo apt-get -yqq install libpq-dev
+          gem install bundler -v 2.2.14
           cp config/database.sample.yml config/database.yml
-          gem install bundler --version 2.2.20
-          bundle config set --local path 'vendor/bundle'
-          bundle install --jobs 4 --retry 3 --path vendor/bundle
-          bin/rails db:create
-      - name: Run tests
-        env:
-          DB_PASSWORD: root
-          DB_PORT: ${{ job.services.mysql.ports[3306] }} # get randomly assigned published port
-        run: |
+          bundle install
+          bundle exec rails db:create
+          bundle exec rails db:migrate
+          bundle exec rails webpacker:install
           bundle exec rspec
-          bin/rails db:schema:load
 
+      # - name: Rubocop Check
+      #  run: |
+      #   bundle exec rubocop
