@@ -1,0 +1,8 @@
+<% if user_signed_in? %>
+  <%= link_to "Loggout", sign_out_path %>
+<% else %>
+  <%= link_to "Loggin", sign_in_path %>
+<% end %>
+
+<h1>Wellcome#welcome</h1>
+<p>Find me in app/views/wellcome/welcome.html.erb</p>
