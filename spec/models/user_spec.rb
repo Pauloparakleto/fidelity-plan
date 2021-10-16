@@ -16,5 +16,25 @@ RSpec.describe User, type: :model do
       user = described_class.create(email: Faker::Internet.email, password: "1234")
       expect(user).not_to be_valid
     end
+
+    it "is invalid not unique email" do
+      email = Faker::Internet.email
+      error_message = "Email has already been taken"
+      described_class.create(email: email, password: "123456")
+      user_second = described_class.create(email: email, password: "123456")
+      expect(user_second.errors.full_messages.first).to eq(error_message)
+    end
+  end
+
+  context "when update" do
+    email = Faker::Internet.email
+    described_class.create(email: email, password: "123456")
+
+    it "has email not unique message" do
+      error_message = "Email has already been taken"
+      user_second = described_class.create(email: Faker::Internet.email, password: "123456")
+      user_second.update(email: email)
+      expect(user_second.errors.full_messages.first).to eq(error_message)
+    end
   end
 end
