@@ -11,4 +11,11 @@ puts "# Module Users"
   email = Faker::Internet.email
   puts "## Creating #{email}"
   User.create(email: email, password: "123456")
+  end
+
+puts "# Module Admins"
+1.times do
+  email = "admin@fidelity-plan.com"
+  puts "## Creating #{email}"
+  Admin.create(email: email, password: "123456")
 end
