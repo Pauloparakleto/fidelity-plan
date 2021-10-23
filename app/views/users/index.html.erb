@@ -4,3 +4,8 @@
     <%= user.email %>
   </p>
 <% end %>
+<% if admin_signed_in? %>
+  <%= link_to "Loggout", sign_out_path %>
+<% else %>
+  <%= link_to "Loggin", sign_in_path %>
+<% end %>
