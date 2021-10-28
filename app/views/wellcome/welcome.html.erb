@@ -14,3 +14,5 @@
 <% elsif !user_signed_in? %>
   <%= link_to "Login as Spoleto Admin", new_admin_session_path %>
 <% end %>
+
+<%= link_to "Invite Admin",  new_admin_invitation_path %>
