@@ -1,12 +1,13 @@
 <% if user_signed_in? %>
   <%= link_to "Loggout", sign_out_path %>
-  <% elsif !admin_signed_in? && !user_signed_in? %>
+<% elsif !admin_signed_in? && !user_signed_in? %>
   <%= link_to "Loggin", sign_in_path %>
 <% end %>
 <br>
 <h1>Wellcome#welcome</h1>
 <% if admin_signed_in? %>
   <h2><%= link_to "Customer list", users_index_path %></h2>
+  <h2><%= link_to "Invite Admin", new_admin_invitation_path %></h2>
 <% end %>
 <p>Find me in app/views/wellcome/welcome.html.erb</p>
 <% if admin_signed_in? %>
@@ -14,5 +15,3 @@
 <% elsif !user_signed_in? %>
   <%= link_to "Login as Spoleto Admin", new_admin_session_path %>
 <% end %>
-
-<%= link_to "Invite Admin",  new_admin_invitation_path %>
