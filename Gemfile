@@ -33,6 +33,8 @@ gem "bootsnap", ">= 1.4.2", require: false
 
 gem "devise"
 
+gem "devise_invitable", "~> 2.0.0"
+
 gem "faker"
 
 group :development, :test do
