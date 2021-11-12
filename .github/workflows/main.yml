@@ -29,6 +29,7 @@ jobs:
           PGUSER: postgres
           PGPASSWORD: 12345
           RAILS_ENV: test
+          SENDGRID_API_KEY: env.SENDGRID_API_KEY
         run: |
           sudo apt-get -yqq install libpq-dev
           gem install bundler -v 2.2.14
