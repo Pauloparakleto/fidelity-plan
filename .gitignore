@@ -27,6 +27,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/config/local_env.yml
 
 /public/packs
 /public/packs-test
@@ -37,3 +38,7 @@ yarn-debug.log*
 /config/database.yml
 /.idea/
 /db/schema.rb
+
+/config/credentials/development.key
+
+/config/credentials/test.key
