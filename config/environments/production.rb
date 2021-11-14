@@ -62,6 +62,8 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.default_url_options = { host: 'fidelity-plan.herokuapp.com' }
+
   config.action_mailer.smtp_settings = {
     # TODO, Check the user name
     :user_name => 'fidelity-plan-sendgrid', # This is the string literal 'apikey', NOT the ID of your API key
