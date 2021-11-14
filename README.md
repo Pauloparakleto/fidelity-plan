@@ -15,3 +15,5 @@ like customizing the Devise Authentication.
 ## Check it out
 
 - [Fidelity Plan](https://fidelity-plan.herokuapp.com/)
+
+The Admin you need to send invitation to another admin: ``admin@fidelity-plan.com password: 123456``
