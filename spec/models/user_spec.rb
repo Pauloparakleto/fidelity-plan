@@ -4,7 +4,6 @@ RSpec.describe User, type: :model do
   context "with badge" do
     it "has badge status uno" do
       user = described_class.create(email: Faker::Internet.email, password: "123456")
-      Badge.create(user: user)
       expect(user.badge.uno?).to eq(true)
     end
   end
