@@ -5,4 +5,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :badge, dependent: :destroy
+
+  after_create :create_badge
+
+  def create_badge
+    create_budge_initial
+  end
+
+  private
+
+  def create_budge_initial
+    UserBadge.new(self).call
+  end
 end
