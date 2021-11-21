@@ -1,6 +1,13 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
+  context "with badge" do
+    it "has badge status uno" do
+      user = described_class.create(email: Faker::Internet.email, password: "123456")
+      expect(user.badge.uno?).to eq(true)
+    end
+  end
+
   context "when create" do
     it "is valid" do
       user = described_class.create(email: Faker::Internet.email, password: "123456")
