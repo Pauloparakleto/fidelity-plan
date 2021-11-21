@@ -1,0 +1,11 @@
+<h1>Users</h1>
+<% @users.each do |user| %>
+  <p>
+    <%= user.email %>
+  </p>
+<% end %>
+<% if admin_signed_in? %>
+  <%= link_to "Loggout", sign_out_path %>
+<% else %>
+  <%= link_to "Loggin", sign_in_path %>
+<% end %>
