@@ -17,5 +17,12 @@ Rails.application.routes.draw do
     get 'sign_out', to: 'devise/sessions#destroy'
     get 'sign_in', to: 'devise/sessions#new'
   end
+
+  # whatsapp
+  namespace :api do
+    namespace :v1 do
+      get '/whatsapp/send_one_way_message', as: 'send_one_way_message'
+    end
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
