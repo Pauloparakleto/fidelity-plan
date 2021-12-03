@@ -29,6 +29,8 @@ jobs:
           PGUSER: postgres
           PGPASSWORD: 12345
           RAILS_ENV: test
+          TWILIO_ACCOUNT_ID: ${{secrets.TWILIO_ACCOUNT_ID}}
+          TWILIO_AUTH_TOKEN: ${{secrets.TWILIO_AUTH_TOKEN}}
         run: |
           sudo apt-get -yqq install libpq-dev
           gem install bundler -v 2.2.14
