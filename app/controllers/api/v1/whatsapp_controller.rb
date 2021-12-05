@@ -5,6 +5,11 @@ module Api
         @message = ::Whatsapp::Messages.one_way_message
         render json: { message: @message.body }, status: :ok
       end
+
+      def bot
+        @response = ::Whatsapp::Messages
+        render xml: @response.bot
+      end
     end
   end
 end
