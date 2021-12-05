@@ -8,6 +8,6 @@ RSpec.describe Whatsapp::Messages do
 
   it "has response only dogs and cats" do
     response = described_class.bot
-    expect(response.to_s.include?("I only know about dogs or cats, sorry!")).to eq(true)
+    expect(response.to_s.include?("I only know about the food menu!")).to eq(true)
   end
 end
