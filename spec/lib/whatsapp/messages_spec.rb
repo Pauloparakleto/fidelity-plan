@@ -5,4 +5,9 @@ RSpec.describe Whatsapp::Messages do
     response = described_class.one_way_message
     expect(response.body).to eq("Aqui é do Godzilla lanches!")
   end
+
+  it "has response only dogs and cats" do
+    response = described_class.bot
+    expect(response.to_s.include?("I only know about the food menu!")).to eq(true)
+  end
 end

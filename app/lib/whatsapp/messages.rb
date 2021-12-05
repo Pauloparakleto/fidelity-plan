@@ -1,5 +1,13 @@
 module Whatsapp
   class Messages
+    def self.bot
+      response = Twilio::TwiML::MessagingResponse.new
+      response.message do |message|
+        message.body("I only know about the food menu!")
+      end
+      response
+    end
+
     def self.one_way_message
       account_sid = ENV["TWILIO_ACCOUNT_ID"]
       auth_token = ENV["TWILIO_AUTH_TOKEN"]
