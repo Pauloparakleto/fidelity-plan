@@ -1,10 +1,9 @@
 module Whatsapp
   class Messages
-
     def self.bot
       response = Twilio::TwiML::MessagingResponse.new
       response.message do |message|
-        message.body("I only know about dogs or cats, sorry!")
+        message.body("I only know about the food menu!")
       end
       response
     end
