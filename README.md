@@ -11,3 +11,17 @@ system so I had to claim my account with my phone number.
 
 Both things caught my attention, the good food and the way I signed up on it, 
 like customizing the Devise Authentication.
+
+## Whatsapp Chat bot
+
+One way to manage restaurant customers is via whatsapp.
+
+It is hard to accountability the restaurant customers orders in order to
+apply some benefits in their favor.
+
+So this is the reason it has been including on this version 
+The ability to the chat bot using the restaurant data for interactions
+with the customers.
+
+For details of changing between releases take a look on the
+release list.
