@@ -27,8 +27,6 @@ RSpec.describe "/foods", type: :request do
     sign_in admin
   end
 
-
-
   describe "GET /index" do
     it "renders a successful response" do
       Food.create! valid_attributes
