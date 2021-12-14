@@ -10,12 +10,17 @@ puts "# Module Users"
 5.times do
   email = Faker::Internet.email
   puts "## Creating #{email}"
-  User.create(email: email, password: "123456")
+  User.create(email: email, password: "123456") if User.count.zero?
   end
 
 puts "# Module Admins"
 1.times do
   email = "admin@fidelity-plan.com"
   puts "## Creating #{email}"
-  Admin.create(email: email, password: "123456")
+  Admin.create(email: email, password: "123456") if Admin.count.zero?
+end
+
+puts "# Module Food"
+10.times do
+  Food.create(name: "x-salad", description: "salad, tomato", price: 12.00) if Food.count.zero?
 end
