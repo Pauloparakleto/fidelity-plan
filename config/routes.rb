@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :foods
+
   devise_for :admins, :skip => [:registration]
   as :admin do
     get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'
