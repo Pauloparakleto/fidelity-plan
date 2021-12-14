@@ -1,7 +1,10 @@
 require "rails_helper"
 
 RSpec.describe Food, type: :model do
-  let!(:food) { create(:food) }
+  let!(:name) { Faker::Food.unique.dish }
+  let!(:description) { Faker::Food.description }
+  let!(:price) { Faker::Number.decimal(l_digits: 2, r_digits: 2) }
+  let!(:food) { create(:food, name: name, description: description, price: price) }
 
   describe "validations" do
     it { is_expected.to validate_presence_of(:name) }
@@ -16,15 +19,15 @@ RSpec.describe Food, type: :model do
     end
 
     it "has name" do
-      expect(food.name).to eq("x-bacon")
+      expect(food.name).to eq(name)
     end
 
     it "has description" do
-      expect(food.description).to eq("salad, tomato")
+      expect(food.description).to eq(description)
     end
 
     it "has price" do
-      expect(food.price).to eq(12.00)
+      expect(food.price).to eq(price)
     end
   end
 
