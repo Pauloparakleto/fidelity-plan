@@ -11,7 +11,7 @@ puts "# Module Users"
   email = Faker::Internet.email
   puts "## Creating #{email}"
   User.create(email: email, password: "123456") if User.count.zero?
-  end
+end
 
 puts "# Module Admins"
 1.times do
@@ -21,6 +21,18 @@ puts "# Module Admins"
 end
 
 puts "# Module Food"
+Food.destroy_all
+
 10.times do
-  Food.create(name: "x-salad", description: "salad, tomato", price: 12.00) if Food.count.zero?
+  Food.create(name: Faker::Food.unique.dish,
+              description: Faker::Food.description,
+              price: Faker::Number.decimal(l_digits: 2, r_digits: 3))
+end
+
+puts "# Module Drink"
+Drink.destroy_all
+
+5.times do
+  Drink.create(name: "suco de abacaxi",
+               price: Faker::Number.decimal(l_digits: 2, r_digits: 3))
 end
