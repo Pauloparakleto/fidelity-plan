@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :foods
 
   get '/menu', to: 'menus#show'
+  patch '/menu/:id', to: 'menus#update_image', as: 'update_food_image'
 
 
   devise_for :admins, :skip => [:registration]
