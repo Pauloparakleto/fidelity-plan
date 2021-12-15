@@ -22,6 +22,7 @@ AllCops:
     - 'app/mailers/application_mailer.rb'
     - 'config.ru'
     - 'Rakefile'
+    - 'spec/factories/menus.rb'
 
 # Metrics Cops
 
