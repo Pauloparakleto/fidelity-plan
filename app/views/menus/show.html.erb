@@ -1,2 +1,6 @@
 <h1>Menu</h1>
-<%= link_to image_tag(url_for(@menu.food_image)) if @menu.food_image.attached? %>
+<h2><%= link_to "Home", root_path %></h2>
+<p>This is the image the robot sends as the first response.</p>
+<%= image_tag(url_for(@menu.food_image)) if @menu.food_image.attached? %>
+
+<%= render 'form' %>
