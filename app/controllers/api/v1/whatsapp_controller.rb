@@ -8,7 +8,7 @@ module Api
 
       def bot
         @response = ::Whatsapp::Messages
-        render xml: @response.bot
+        render xml: @response.new.bot
       end
     end
   end
