@@ -1,6 +1,5 @@
 module Whatsapp
   class Messages
-    include ActionView
     def self.bot
       response = Twilio::TwiML::MessagingResponse.new
       response.message do |message|
