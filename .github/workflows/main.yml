@@ -31,6 +31,9 @@ jobs:
           RAILS_ENV: test
           TWILIO_ACCOUNT_ID: ${{secrets.TWILIO_ACCOUNT_ID}}
           TWILIO_AUTH_TOKEN: ${{secrets.TWILIO_AUTH_TOKEN}}
+          CLOUD_NAME: ${{secrets.CLOUD_NAME}}
+          CLOUD_API_KEY: ${{secrets.CLOUD_API_KEY}}
+          CLOUD_API_SECRET: ${{secrets.CLOUD_API_SECRET}}
         run: |
           sudo apt-get -yqq install libpq-dev
           gem install bundler -v 2.2.14

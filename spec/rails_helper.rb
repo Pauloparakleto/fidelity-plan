@@ -70,4 +70,9 @@ RSpec.configure do |config|
       with.library :rails
     end
   end
+
+  config.after(:suite) do
+    uploads_test_path = Rails.root.join('tmp/storage')
+    FileUtils.rm_rf(Dir[uploads_test_path])
+  end
 end

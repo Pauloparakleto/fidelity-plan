@@ -5,6 +5,7 @@
 <% end %>
 <br>
 <% if admin_signed_in? %>
+  <h2><%= link_to "Menu", menu_path %></h2>
   <h2><%= link_to "Foods", foods_path %></h2>
   <h2><%= link_to "Drinks", drinks_path %></h2>
   <h2><%= link_to "Customer list", users_index_path %></h2>
