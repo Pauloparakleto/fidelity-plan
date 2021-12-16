@@ -1,5 +1,5 @@
 <h1>Upload menu food image</h1>
 <%= form_with model: @menu, url: update_food_image_path(@menu.id), method: "patch" do |form| %>
-  <%= form.file_field :food_image %>
+  <%= form.file_field :food_image, direct_upload: true %>
   <%= form.submit "Upload Image Menu" %>
 <% end %>
