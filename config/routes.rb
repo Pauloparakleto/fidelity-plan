@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   resources :drinks
   resources :foods
 
+  get '/menu', to: 'menus#show'
+  patch '/menu/:id', to: 'menus#update_image', as: 'update_food_image'
+
+
   devise_for :admins, :skip => [:registration]
   as :admin do
     get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'
