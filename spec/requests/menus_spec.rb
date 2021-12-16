@@ -8,6 +8,11 @@ RSpec.describe "menu", type: :request do
     expect(response).to be_successful
   end
 
+  it "gets menu empty" do
+    get menu_path
+    expect(response).to be_successful
+  end
+
   it "PATCH image" do
     food_image = fixture_file_upload("menu_food.jpeg")
     menu = create(:menu)
