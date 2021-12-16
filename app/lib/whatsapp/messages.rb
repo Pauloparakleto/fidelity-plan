@@ -1,11 +1,15 @@
 module Whatsapp
   class Messages
-    def self.bot
-      response = Twilio::TwiML::MessagingResponse.new
-      response.message do |message|
-        message.body("I only know about the food menu!")
+    def initialize
+      @response = Twilio::TwiML::MessagingResponse.new
+    end
+
+    def bot
+      @response.message do |message|
+        message.body("Esse é o nosso cardápio tradicional...")
+        message.media path_to_food_menu
       end
-      response
+      @response
     end
 
     def self.one_way_message
@@ -22,6 +26,10 @@ module Whatsapp
         from: "whatsapp:+14155238886",
         to: "whatsapp:+559192736624",
       )
+    end
+
+    def path_to_food_menu
+      Rails.application.routes.url_helpers.rails_blob_path(Menu.first.food_image, only_path: true)
     end
   end
 end

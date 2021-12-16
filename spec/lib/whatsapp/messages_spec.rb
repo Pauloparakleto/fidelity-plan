@@ -6,8 +6,21 @@ RSpec.describe Whatsapp::Messages do
     expect(response.body).to eq("Aqui é do Godzilla lanches!")
   end
 
-  it "has response only dogs and cats" do
-    response = described_class.bot
-    expect(response.to_s.include?("I only know about the food menu!")).to eq(true)
+  it "has response traditional menu" do
+    food_image = fixture_file_upload("menu_food.jpeg")
+    menu = create(:menu)
+    menu.food_image.attach(food_image)
+    response = described_class.new.bot
+
+    expect(response.to_s.include?("Esse é o nosso cardápio tradicional...")).to eq(true)
+  end
+
+  it "has response menu_food media" do
+    food_image = fixture_file_upload("menu_food.jpeg")
+    menu = create(:menu)
+    menu.food_image.attach(food_image)
+    response = described_class.new.bot
+
+    expect(response.to_s.include?("menu_food.jpeg")).to eq(true)
   end
 end
