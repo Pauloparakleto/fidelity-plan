@@ -10,7 +10,7 @@ RSpec.describe Whatsapp::Messages do
     food_image = fixture_file_upload("menu_food.jpeg")
     menu = create(:menu)
     menu.food_image.attach(food_image)
-    response = described_class.bot
+    response = described_class.new.bot
 
     expect(response.to_s.include?("Esse é o nosso cardápio tradicional...")).to eq(true)
   end
@@ -19,7 +19,7 @@ RSpec.describe Whatsapp::Messages do
     food_image = fixture_file_upload("menu_food.jpeg")
     menu = create(:menu)
     menu.food_image.attach(food_image)
-    response = described_class.bot
+    response = described_class.new.bot
 
     expect(response.to_s.include?("menu_food.jpeg")).to eq(true)
   end
