@@ -5,7 +5,6 @@ module Whatsapp
       response.message do |message|
         message.body("Esse é o nosso cardápio tradicional...")
         message.media path_to_food_menu
-
       end
       response
     end
@@ -25,8 +24,6 @@ module Whatsapp
         to: "whatsapp:+559192736624",
       )
     end
-
-    private
 
     def self.path_to_food_menu
       Rails.application.routes.url_helpers.rails_blob_path(Menu.first.food_image, only_path: true)
