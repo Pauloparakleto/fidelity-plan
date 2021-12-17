@@ -6,7 +6,7 @@ RSpec.describe Whatsapp::Messages do
       "WaId" => "559192736624",
       "To" => "whatsapp:+14155238886",
       "From" => "whatsapp:+559192736624",
-      "ApiVersion" => "2010-04-01" }
+      "Body" => "olá" }
   }
 
   it "saves user phone" do
@@ -49,5 +49,41 @@ RSpec.describe Whatsapp::Messages do
     response = described_class.new(params).bot
 
     expect(response.to_s.include?("menu_food.jpeg")).to eq(true)
+  end
+
+  context "with address" do
+    let!(:params_with_address) {
+      { "ProfileName" => "Paulo Felipe",
+        "WaId" => "559192736624",
+        "Body" => "av. joao paulo n 45",
+        "To" => "whatsapp:+14155238886",
+        "From" => "whatsapp:+559192736624" }
+    }
+
+    let!(:params_without_address) {
+      { "ProfileName" => "Paulo Felipe",
+        "WaId" => "559192736624",
+        "Body" => "olá, quero fazer meu pedido",
+        "To" => "whatsapp:+14155238886",
+        "From" => "whatsapp:+559192736624" }
+    }
+
+    it "saves user address" do
+      food_image = fixture_file_upload("menu_food.jpeg")
+      menu = create(:menu)
+      menu.food_image.attach(food_image)
+      described_class.new(params_with_address).bot
+
+      expect(User.last.reload.address).to eq("av. joao paulo n 45")
+    end
+
+    it "does not save user address" do
+      food_image = fixture_file_upload("menu_food.jpeg")
+      menu = create(:menu)
+      menu.food_image.attach(food_image)
+      described_class.new(params_without_address).bot
+
+      expect(User.last.address).to eq(nil)
+    end
   end
 end
