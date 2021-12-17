@@ -23,7 +23,14 @@ module Whatsapp
 
     def bot
       create_user
+      save_address
       send_first_response
+    end
+
+    def save_address
+      return unless @params["Body"].include? "av."
+
+      User.find_by(phone: @params["WaId"]).update(address: @params["Body"])
     end
 
     def self.one_way_message
