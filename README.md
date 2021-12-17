@@ -16,6 +16,8 @@ like customizing the Devise Authentication.
 
 One way to manage restaurant customers is via whatsapp.
 
+![](https://res.cloudinary.com/dilwtauny/image/upload/v1639748253/fidelity-plan/robot_response_wasyr9.jpg)
+
 It is hard to accountability the restaurant customers orders in order to
 apply some benefits in their favor.
 
