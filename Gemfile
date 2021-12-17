@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.6.7"
+ruby "2.7.0"
 
 # image uploads
 gem "cloudinary"
@@ -14,7 +14,7 @@ gem "puma", "~> 4.1"
 # Use SCSS for stylesheets
 gem "sass-rails", ">= 6"
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem "webpacker", "~> 4.0"
+gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem "turbolinks", "~> 5"
 # Permit whatsapp message
