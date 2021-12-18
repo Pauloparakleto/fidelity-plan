@@ -2,7 +2,7 @@
   "name": "app",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "^6.0.0-rc.6",
+    "@rails/webpacker": "https://github.com/rails/webpacker.git",
     "webpack": "^5.53.0",
     "webpack-cli": "^4.8.0"
   },
