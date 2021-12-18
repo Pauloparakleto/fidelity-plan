@@ -392,7 +392,7 @@
     "@babel/helper-remap-async-to-generator" "^7.16.5"
     "@babel/plugin-syntax-async-generators" "^7.8.4"
 
-"@babel/plugin-proposal-class-properties@^7.14.5", "@babel/plugin-proposal-class-properties@^7.16.5":
+"@babel/plugin-proposal-class-properties@^7.16.5":
   version "7.16.5"
   resolved "https://registry.npmjs.org/@babel/plugin-proposal-class-properties/-/plugin-proposal-class-properties-7.16.5.tgz"
   integrity sha512-pJD3HjgRv83s5dv1sTnDbZOaTjghKEz8KUn1Kbh2eAIRhGuyQ1XSeI4xVXU3UlIEVA3DAyIdxqT1eRn7Wcn55A==
@@ -1081,29 +1081,6 @@
   dependencies:
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
-
-"@rails/webpacker@^6.0.0-rc.6":
-  version "6.0.0-rc.6"
-  resolved "https://registry.yarnpkg.com/@rails/webpacker/-/webpacker-6.0.0-rc.6.tgz#04af15dc33697e09aa492da54d2093cdd15573ff"
-  integrity sha512-nbDxn3KsSoLeJgVpU3J81wiXLg4vErEahWdi08BJx5EO9aS6+mXWhOXHKyQogCxLkBMvLZqOafUnJMcK9O+9sA==
-  dependencies:
-    "@babel/core" "^7.15.5"
-    "@babel/plugin-proposal-class-properties" "^7.14.5"
-    "@babel/plugin-transform-runtime" "^7.15.0"
-    "@babel/preset-env" "^7.15.6"
-    "@babel/runtime" "^7.15.4"
-    babel-loader "^8.2.2"
-    compression-webpack-plugin "^9.0.0"
-    glob "^7.2.0"
-    js-yaml "^4.1.0"
-    path-complete-extname "^1.0.0"
-    pnp-webpack-plugin "^1.7.0"
-    terser-webpack-plugin "^5.2.4"
-    webpack "^5.53.0"
-    webpack-assets-manifest "^5.0.6"
-    webpack-cli "^4.8.0"
-    webpack-merge "^5.8.0"
-    webpack-sources "^3.2.1"
 
 "@rails/webpacker@https://github.com/rails/webpacker.git":
   version "6.0.0-rc.6"
