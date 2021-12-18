@@ -7,5 +7,4 @@ class User < ApplicationRecord
   has_one :badge, dependent: :destroy
 
   after_create :create_badge
-  after_create :send_email_registration_notification
 end
