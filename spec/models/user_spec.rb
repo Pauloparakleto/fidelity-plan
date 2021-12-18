@@ -29,6 +29,14 @@ RSpec.describe User, type: :model do
       expect(user.phone).to eq("+55919922736624")
     end
 
+    it "has address" do
+      user = described_class.create(email: Faker::Internet.email,
+                                    phone: "+55919922736624",
+                                    address: "av. joão paulo, n 45")
+
+      expect(user.address).to eq("av. joão paulo, n 45")
+    end
+
     it "is invalid not unique email" do
       email = Faker::Internet.email
       error_message = "Email has already been taken"
