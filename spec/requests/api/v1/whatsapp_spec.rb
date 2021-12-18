@@ -6,7 +6,7 @@ RSpec.describe "whatsapp", type: :request do
       "WaId" => "559192736624",
       "To" => "whatsapp:+14155238886",
       "From" => "whatsapp:+559192736624",
-      "ApiVersion" => "2010-04-01" }
+      "Body" => "Olá" }
   }
 
   it "gets one way message" do
