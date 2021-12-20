@@ -11,7 +11,7 @@ class Order < ApplicationRecord
   def set_total
     @total = 0
     items.each do |item|
-      @total += item.quantity*item.price
+      @total += item.quantity * item.price
     end
     @total
   end
