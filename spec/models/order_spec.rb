@@ -5,9 +5,9 @@ RSpec.describe Order, type: :model do
   let!(:drink) { create(:drink) }
   let!(:order) {
     described_class.create(items_attributes: [
-      { food_id: food.id, name: food.name, price: 13.23, quantity: 2 },
-      { drink_id: drink.id, name: drink.name, price: 4.50, quantity: 3 },
-    ])
+                             { food_id: food.id, name: food.name, price: 13.23, quantity: 2 },
+                             { drink_id: drink.id, name: drink.name, price: 4.50, quantity: 3 },
+                           ])
   }
 
   context "when create" do
