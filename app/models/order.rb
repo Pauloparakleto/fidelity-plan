@@ -1,4 +1,4 @@
 class Order < ApplicationRecord
-  has_one :item, dependent: :destroy
-  accepts_nested_attributes_for :item
+  has_many :items, dependent: :destroy
+  accepts_nested_attributes_for :items
 end
