@@ -2,9 +2,9 @@ class Order < ApplicationRecord
   attr_accessor :total
 
   has_many :items, dependent: :destroy
-  accepts_nested_attributes_for :items
+  accepts_nested_attributes_for :items, allow_destroy: true
 
-  before_save :set_total
+  after_save :set_total
 
   private
 
