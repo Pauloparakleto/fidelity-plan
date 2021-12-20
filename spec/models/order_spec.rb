@@ -69,4 +69,40 @@ RSpec.describe Order, type: :model do
       expect(order.total).to eq(44.46)
     end
   end
+
+  context "when destroy first item" do
+    it "counts 1" do
+      params = { order: { id: order.id,
+                          items_attributes: [{ id: order.items.first.id, _destroy: "1" }] } }
+      order.attributes = params[:order]
+      order.save
+      expect(order.items.length).to eq(1)
+    end
+
+    it "sums total 13.50" do
+      params = { order: { id: order.id,
+                          items_attributes: [{ id: order.items.first.id, _destroy: "1" }] } }
+      order.attributes = params[:order]
+      order.save
+      expect(order.total).to eq(13.50)
+    end
+  end
+
+  context "when destroy second item" do
+    it "counts 1" do
+      params = { order: { id: order.id,
+                          items_attributes: [{ id: order.items.second.id, _destroy: "1" }] } }
+      order.attributes = params[:order]
+      order.save
+      expect(order.items.length).to eq(1)
+    end
+
+    it "sums total 13.50" do
+      params = { order: { id: order.id,
+                          items_attributes: [{ id: order.items.second.id, _destroy: "1" }] } }
+      order.attributes = params[:order]
+      order.save
+      expect(order.total).to eq(26.46)
+    end
+  end
 end
