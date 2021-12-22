@@ -18,7 +18,7 @@ RSpec.describe "/orders", type: :request do
   let(:food) { create(:food) }
   let(:drink) { create(:drink) }
   let(:valid_attributes) {
-    { items_attributes: [
+    { customer_name: "customer", address: "av. JP n. 45", items_attributes: [
       { food_id: food.id, name: food.name, price: 13.23, quantity: 2 },
       { drink_id: drink.id, name: drink.name, price: 4.50, quantity: 3 },
     ] }
