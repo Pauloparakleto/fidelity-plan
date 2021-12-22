@@ -94,21 +94,18 @@ RSpec.describe "/orders", type: :request do
     let(:order) { Order.create(valid_attributes) }
 
     context "with valid parameters" do
-      let(:new_attributes) {
-        { items_attributes: [
-          { id: order.items.first.id, food_id: food.id, name: food.name, price: 13.23, quantity: 1 },
-          { id: order.items.second.id, drink_id: drink.id, name: drink.name, price: 4.50, quantity: 3 },
-        ] }
-      }
+      before do
+        valid_attributes[:items_attributes].first[:quantity] = 1
+      end
 
       it "updates the requested order" do
-        patch order_url(order), params: { order: new_attributes }
+        patch order_url(order), params: { order: valid_attributes }
         order.reload
         expect(order.items.first.quantity).to eq(1)
       end
 
       it "redirects to the order" do
-        patch order_url(order), params: { order: new_attributes }
+        patch order_url(order), params: { order: valid_attributes }
         order.reload
         expect(response).to redirect_to(order_url(order))
       end
