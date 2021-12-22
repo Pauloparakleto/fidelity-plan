@@ -1,5 +1,4 @@
 class Item < ApplicationRecord
-
   belongs_to :order
   before_save :set_subtotal
 
