@@ -96,20 +96,20 @@ RSpec.describe "/orders", type: :request do
   end
 
   describe "PATCH /update" do
-    let(:order) { Order.create(valid_attributes) }
-
     context "with valid parameters" do
       before do
         valid_attributes[:items_attributes].first[:quantity] = 1
       end
 
       it "updates the requested order" do
+        order = Order.create(valid_attributes)
         patch order_url(order), params: { order: valid_attributes }
         order.reload
         expect(order.items.first.quantity).to eq(1)
       end
 
       it "redirects to the order" do
+        order = Order.create(valid_attributes)
         patch order_url(order), params: { order: valid_attributes }
         order.reload
         expect(response).to redirect_to(order_url(order))
