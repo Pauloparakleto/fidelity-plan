@@ -10,6 +10,17 @@
       </ul>
     </div>
   <% end %>
+
+  <div>
+    <%= form.label :customer_name %>
+    <%= form.text_field :customer_name %>
+  </div>
+
+  <div>
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
   <% @order.items.each do |item| %>
     <%= form.fields_for :items, item do |items_form| %>
       <div>
