@@ -49,6 +49,10 @@ RSpec.describe Order, type: :model do
     it "sums 39.96" do
       expect(order.total).to eq(39.96)
     end
+
+    it "has subtotal" do
+      expect(order.items.first.subtotal).to eq(26.46)
+    end
   end
 
   context "when update" do
@@ -87,7 +91,7 @@ RSpec.describe Order, type: :model do
                           items_attributes: [{ id: order.items.first.id, _destroy: "1" }] } }
       order.attributes = params[:order]
       order.save
-      expect(order.total).to eq(13.50)
+      expect(order.reload.total).to eq(13.50)
     end
   end
 
@@ -105,7 +109,7 @@ RSpec.describe Order, type: :model do
                           items_attributes: [{ id: order.items.second.id, _destroy: "1" }] } }
       order.attributes = params[:order]
       order.save
-      expect(order.total).to eq(26.46)
+      expect(order.reload.total).to eq(26.46)
     end
   end
 end
