@@ -15,6 +15,7 @@ require "rails_helper"
 RSpec.describe "/orders", type: :request do
   # Order. As you add validations to Order, be sure to
   # adjust the attributes here as well.
+  let!(:admin) { create(:admin) }
   let(:food) { create(:food) }
   let(:drink) { create(:drink) }
   let(:valid_attributes) {
@@ -30,6 +31,10 @@ RSpec.describe "/orders", type: :request do
       { drink_id: drink.id, name: drink.name, price: 4.50, quantity: 3 },
     ] }
   }
+
+  before do
+    sign_in admin
+  end
 
   describe "GET /index" do
     it "renders a successful response" do
