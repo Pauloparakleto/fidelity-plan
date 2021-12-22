@@ -1,18 +1,9 @@
 class Order < ApplicationRecord
-  attr_accessor :total
-
   has_many :items, dependent: :destroy
-  accepts_nested_attributes_for :items, allow_destroy: true
+  accepts_nested_attributes_for :items, allow_destroy: true,
+                                        reject_if: ->(attributes) { attributes["quantity"].blank? }
 
-  after_save :set_total
-
-  private
-
-  def set_total
-    @total = 0
-    items.each do |item|
-      @total += item.quantity * item.price
-    end
-    @total
+  def total
+    items.sum { |item| item.price * item.quantity }
   end
 end
