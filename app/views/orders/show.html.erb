@@ -1,0 +1,27 @@
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Subtotal</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @order.items.each do |item| %>
+    <tr>
+      <td><%= item.name %> </td>
+      <td><%= number_to_currency(item.price, unit: "", separator: ",", format: "%u %n") %> </td>
+      <td><%= item.quantity %> </td>
+      <td><%= number_to_currency(item.subtotal, unit: "", separator: ",", format: "%u %n") %> </td>
+      <td><%= link_to 'Edit', edit_order_path(@order) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<div>Total <%= number_to_currency(@order.total, unit: "R$", separator: ",", format: "%u %n") %></div>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>
